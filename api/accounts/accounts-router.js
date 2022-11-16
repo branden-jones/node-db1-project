@@ -48,10 +48,10 @@ router.put('/:id',
 
 router.delete('/:id',
   md.checkAccountId,
-  (req, res, next) => {
-  // DO YOUR 
+  async (req, res, next) => {
   try{
-
+    await Account.deleteById(req.params.id)
+    res.json(req.body)
   }
   catch(err){
     next(err)
